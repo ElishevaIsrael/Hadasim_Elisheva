@@ -1,0 +1,58 @@
+<table class="members-table" *ngIf="members.length > 0">
+  <thead>
+    <tr>
+      <th>Id Member</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>City</th>
+      <th>Street</th>
+      <th>Building</th>
+      <th>Date Of Birth</th>
+      <th>Telephone</th>
+      <th>Mobile Phone</th>
+      <th>Details</th>    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let member of members">
+      <td>{{ member.idNumber }}</td>
+      <td>{{ member.firstName }}</td>
+      <td>{{ member.lastName }}</td>
+      <td>{{ member.city }}</td>
+      <td>{{ member.street }}</td>
+      <td>{{ member.number }}</td>
+      <td>{{ datePipe.transform(member.dateOfBirth, 'yyyy-MM-dd') }}</td>
+      <td>{{ member.phone }}</td>
+      <td>{{ member.mobilePhone }}</td>
+      <td>
+        <button (click)="fetchMemberDetails(member.idNumber)">Details</button>
+      </td>
+      <td><button (click)="deleteMember(member.idNumber)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+  
+<div *ngIf="selectedMemberId">
+  <h2>Vaccination Details</h2>
+  <table class="list-vaccine" *ngIf="vaccinationDetails && vaccinationDetails.length > 0" >
+    <thead>
+      <tr>
+        <th>Number of Vaccine</th>
+        <th>Date of Getting the Vaccine</th>
+        <th>Manufacturer of the Vaccine</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vaccination of vaccinationDetails">
+        <td>{{ vaccination.coronaVaccine }}</td>
+        <td>{{ datePipe.transform(vaccination.vaccineDate, 'yyyy-MM-dd')  }}</td>
+        <td>{{ vaccination.vaccineManufacturer }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>COVID Status</h2>
+  <p>The member got positive test date in: {{ datePipe.transform(covidStatus?.positiveTestDate, 'yyyy-MM-dd')}}</p>
+  <p>The member recovered from the covid in: {{ datePipe.transform(covidStatus?.recoveryDate, 'yyyy-MM-dd') }}</p>
+</div>

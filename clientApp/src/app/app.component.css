@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically within the container */
+    align-items: center; /* Center elements horizontally within the container */
+    min-height: 100vh; /* Set minimum height to viewport height */
+  }
+  
+  .main span {
+    color: maroon;
+    font-family: 'Dancing Script', cursive; /* Use an interesting font like 'Dancing Script' */
+    font-size: 3em; /* Set font size to 3 times the default */
+    margin-top: 50px; /* Add margin-top to position the title at the top */
+  }
